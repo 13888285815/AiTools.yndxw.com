@@ -693,42 +693,129 @@ body{
   line-height:1.5;
 }
 
-/* ==================== 实时热点 ==================== */
-.yinian-hot-bar{
-  background:linear-gradient(135deg,#6366f1,#818cf8);
-  color:#fff;
-  border-radius:var(--radius);
-  padding:14px 20px;
+/* ==================== MSN风格热点区域 ==================== */
+.yinian-msn-container{
   margin-bottom:24px;
-  display:flex;align-items:center;gap:16px;
-  box-shadow:0 4px 16px rgba(99,102,241,0.3);
 }
-.yinian-hot-label{
+.yinian-msn-refresh{
+  text-align:center;
+  margin-bottom:16px;
+  padding:12px;
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 2px 12px rgba(0,0,0,0.06);
+}
+.yinian-msn-refresh button{
+  background:linear-gradient(135deg,#6366f1,#818cf8);
+  color:white;
+  border:none;
+  padding:10px 24px;
+  border-radius:20px;
+  cursor:pointer;
+  font-size:14px;
+}
+.yinian-msn-refresh button:hover{
+  transform:scale(1.05);
+}
+.yinian-msn-refresh span{
+  margin-left:15px;
+  font-size:12px;
+  color:#888;
+}
+.yinian-msn-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:16px;
+}
+@media(max-width:1400px){
+  .yinian-msn-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:900px){
+  .yinian-msn-grid{grid-template-columns:1fr;}
+}
+.yinian-msn-col{
+  background:#fff;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 2px 12px rgba(0,0,0,0.06);
+  border:1px solid var(--border);
+}
+.yinian-msn-header{
+  padding:12px 16px;
   font-size:14px;font-weight:700;
-  white-space:nowrap;
-  display:flex;align-items:center;gap:6px;
+  color:#fff;
+  display:flex;align-items:center;gap:8px;
 }
-.yinian-hot-scroll{
-  flex:1;overflow:hidden;
-  position:relative;
+.yinian-msn-header.videos{background:linear-gradient(135deg,#ef4444,#f97316)}
+.yinian-msn-header.hotlist{background:linear-gradient(135deg,#6366f1,#818cf8)}
+.yinian-msn-header.headlines{background:linear-gradient(135deg,#10b981,#34d399)}
+.yinian-msn-header.social{background:linear-gradient(135deg,#ec4899,#f472b6)}
+.yinian-msn-body{
+  padding:12px;
 }
-.yinian-hot-items{
-  display:flex;flex-direction:column;gap:4px;
+.yinian-msn-item{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:8px 0;
+  border-bottom:1px solid #f0f0f0;
+  cursor:pointer;
+  transition:all .2s;
 }
-.yinian-hot-item{
-  display:flex;align-items:center;gap:10px;
-  font-size:13px;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-.yinian-hot-item .num{
+.yinian-msn-item:last-child{border-bottom:none}
+.yinian-msn-item:hover{background:#f9fafb;margin:0 -12px;padding-left:12px;padding-right:12px}
+.yinian-msn-num{
   width:20px;height:20px;
-  background:rgba(255,255,255,0.2);
+  background:var(--primary);
+  color:#fff;
   border-radius:4px;
   display:flex;align-items:center;justify-content:center;
   font-size:11px;font-weight:700;
   flex-shrink:0;
 }
-.yinian-hot-item .num.hot{background:#fff;color:var(--primary)}
+.yinian-msn-num.top{background:#ef4444}
+.yinian-msn-num.second{background:#f97316}
+.yinian-msn-num.third{background:#eab308}
+.yinian-msn-text{
+  flex:1;font-size:13px;line-height:1.5;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.yinian-msn-tag{
+  display:inline-block;padding:2px 6px;
+  background:#e0e7ff;color:var(--primary);
+  font-size:10px;border-radius:3px;
+  margin-bottom:6px;
+}
+/* 视频标题和统计信息样式 */
+.video-title{
+  font-size:13px;color:var(--text);margin:4px 0;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.video-info{
+  display:flex;gap:10px;font-size:11px;color:#888;
+}
+.video-author{color:#666;}
+.video-stat{display:flex;align-items:center;gap:2px;}
+.yinian-msn-img{
+  width:80px;height:60px;
+  border-radius:6px;
+  object-fit:cover;
+  background:#f3f4f6;
+  flex-shrink:0;
+}
+.yinian-msn-video{
+  position:relative;
+}
+.yinian-msn-video::after{
+  content:'▶';
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:32px;height:32px;
+  background:rgba(0,0,0,0.6);
+  border-radius:50%;
+  color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;
+}
 
 /* ==================== 公众号推荐 ==================== */
 .yinian-wechat-grid{
@@ -835,6 +922,154 @@ body{
 .yinian-tab:hover{border-color:var(--primary);color:var(--primary)}
 .yinian-tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
 
+/* ==================== 案例展示 ==================== */
+.yinian-cases-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:20px;
+  padding:16px;
+}
+.yinian-case-card{
+  background:#fafafa;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  transition:all .3s;
+  cursor:pointer;
+}
+.yinian-case-card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-hover);
+  border-color:var(--primary);
+}
+.yinian-case-thumb{
+  width:100%;
+  height:180px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:48px;
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+.yinian-case-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.yinian-case-badge{
+  position:absolute;
+  top:12px;
+  right:12px;
+  padding:4px 10px;
+  background:rgba(0,0,0,0.6);
+  color:#fff;
+  border-radius:12px;
+  font-size:11px;
+  font-weight:600;
+}
+.yinian-case-body{
+  padding:16px;
+}
+.yinian-case-title{
+  font-size:16px;
+  font-weight:700;
+  color:var(--text);
+  margin-bottom:8px;
+}
+.yinian-case-desc{
+  font-size:13px;
+  color:#666;
+  line-height:1.6;
+  margin-bottom:12px;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.yinian-case-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-bottom:12px;
+}
+.yinian-case-tag{
+  padding:3px 10px;
+  background:#f0f0ff;
+  color:var(--primary);
+  border-radius:10px;
+  font-size:11px;
+}
+.yinian-case-footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-top:12px;
+  border-top:1px solid #f0f0f0;
+}
+.yinian-case-date{
+  font-size:12px;
+  color:#999;
+}
+.yinian-case-try{
+  font-size:12px;
+  color:#3b82f6;
+  font-weight:500;
+}
+.yinian-case-card{
+  text-decoration:none;
+  color:inherit;
+  display:block;
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.yinian-case-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 25px rgba(0,0,0,0.1);
+}
+.yinian-case-link{
+  padding:6px 14px;
+  background:var(--primary);
+  color:#fff;
+  border-radius:6px;
+  font-size:12px;
+  font-weight:600;
+  text-decoration:none;
+  transition:all .2s;
+}
+.yinian-case-link:hover{
+  background:var(--primary-dark);
+}
+.yinian-case-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:12px;
+  padding-top:12px;
+  border-top:1px solid #f0f0f0;
+}
+.yinian-case-demo-btn{
+  padding:6px 12px;
+  background:linear-gradient(135deg,#10b981,#059669);
+  color:#fff;
+  border-radius:6px;
+  font-size:12px;
+  font-weight:600;
+  text-decoration:none;
+  transition:all .2s;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+}
+.yinian-case-demo-btn:hover{
+  background:linear-gradient(135deg,#059669,#047857);
+  transform:translateY(-1px);
+}
+@media(max-width:600px){
+  .yinian-cases-grid{grid-template-columns:1fr}
+}
+
 /* 响应式 */
 @media(max-width:900px){
   .yinian-section-body{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
@@ -848,6 +1083,124 @@ body{
   .yinian-btn span{display:none}
   .token-stats{grid-template-columns:1fr;}
 }
+
+/* ==================== 智能客服 ==================== */
+.chatbot-float-btn{
+  position:fixed;bottom:30px;right:30px;
+  width:56px;height:56px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  border-radius:50%;color:#fff;
+  border:none;cursor:pointer;
+  font-size:24px;display:flex;
+  align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(99,102,241,0.4);
+  transition:all .3s;z-index:999;
+}
+.chatbot-float-btn:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(99,102,241,0.5)}
+.chatbot-float-btn:active{transform:scale(0.95)}
+
+.chatbot-modal{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,0.5);
+  z-index:1000;display:none;
+  align-items:center;justify-content:center;
+  padding:20px;backdrop-filter:blur(4px)
+}
+.chatbot-modal.active{display:flex}
+
+.chatbot-container{
+  width:100%;max-width:400px;
+  height:600px;max-height:80vh;
+  background:#fff;border-radius:16px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.3);
+  display:flex;flex-direction:column;
+  overflow:hidden;animation:slideUp .3s ease
+}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+.chatbot-header{
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:#fff;padding:16px;
+  display:flex;align-items:center;gap:12px;
+}
+.chatbot-avatar{
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(255,255,255,0.2);
+  display:flex;align-items:center;justify-content:center;font-size:20px
+}
+.chatbot-title{flex:1}
+.chatbot-title h3{font-size:16px;margin-bottom:2px}
+.chatbot-title p{font-size:12px;opacity:0.85}
+.chatbot-close{
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(255,255,255,0.2);border:none;
+  color:#fff;font-size:18px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+.chatbot-close:hover{background:rgba(255,255,255,0.3)}
+
+.chatbot-messages{
+  flex:1;overflow-y:auto;
+  padding:16px;display:flex;
+  flex-direction:column;gap:12px;
+  background:#f8fafc
+}
+.chatbot-message{
+  display:flex;gap:8px;max-width:85%
+}
+.chatbot-message.user{margin-left:auto;flex-direction:row-reverse}
+.chatbot-msg-avatar{
+  width:32px;height:32px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:14px;
+  flex-shrink:0
+}
+.chatbot-message.bot .chatbot-msg-avatar{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff}
+.chatbot-message.user .chatbot-msg-avatar{background:#f59e0b;color:#fff}
+.chatbot-msg-bubble{
+  padding:10px 14px;border-radius:12px;font-size:14px;
+  line-height:1.5;word-break:break-word
+}
+.chatbot-message.bot .chatbot-msg-bubble{background:#fff;color:#333;border-bottom-left-radius:4px}
+.chatbot-message.user .chatbot-msg-bubble{background:var(--primary);color:#fff;border-bottom-right-radius:4px}
+.chatbot-msg-time{font-size:10px;color:#999;margin-top:4px}
+.chatbot-message.user .chatbot-msg-time{text-align:right}
+
+.chatbot-input-area{
+  padding:12px;background:#fff;
+  border-top:1px solid var(--border);
+  display:flex;gap:8px
+}
+.chatbot-input{
+  flex:1;padding:10px 14px;
+  border:1px solid var(--border);
+  border-radius:20px;font-size:14px;
+  outline:none;transition:border-color .2s
+}
+.chatbot-input:focus{border-color:var(--primary)}
+.chatbot-send{
+  width:40px;height:40px;
+  background:var(--primary);color:#fff;
+  border:none;border-radius:50%;
+  cursor:pointer;font-size:16px;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s
+}
+.chatbot-send:hover{background:var(--primary-dark)}
+.chatbot-send:disabled{opacity:0.5;cursor:not-allowed}
+
+.chatbot-typing{
+  display:flex;gap:4px;padding:8px 12px;
+  background:#fff;border-radius:12px;
+  border-bottom-left-radius:4px;width:fit-content
+}
+.chatbot-typing-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:#94a3b8;animation:typing 1.4s infinite
+}
+.chatbot-typing-dot:nth-child(2){animation-delay:.2s}
+.chatbot-typing-dot:nth-child(3){animation-delay:.4s}
+@keyframes typing{0%,60%,100%{opacity:.4;transform:translateY(0)}30%{opacity:1;transform:translateY(-6px)}}
+
 </style>
 </head>
 <body>
@@ -1074,6 +1427,7 @@ body{
       <a href="#" data-tab="video">视频工具</a>
       <a href="#" data-tab="image">高清图库</a>
       <a href="#" data-tab="ecommerce">社交电商</a>
+      <a href="#" data-tab="cases">我的案例</a>
       <a href="#" data-tab="more">更多工具</a>
     </nav>
   </div>
@@ -1081,6 +1435,18 @@ body{
 
 <!-- 主内容 -->
 <main class="yinian-container">
+
+  <!-- 我的案例 -->
+  <section class="yinian-section" id="sec-cases">
+    <div class="yinian-section-header">
+      <div class="yinian-section-title">
+        <div class="icon" style="background:#fef3c7;color:#d97706">🏆</div>
+        我的案例
+      </div>
+      <a href="#" class="yinian-section-more" onclick="return false">更多 ></a>
+    </div>
+    <div class="yinian-cases-grid" id="cases-grid"></div>
+  </section>
 
   <!-- 搜索 -->
   <div class="yinian-search-wrap">
@@ -1119,13 +1485,34 @@ body{
     </a>
   </div>
 
-  <!-- 实时热点 -->
-  <div class="yinian-hot-bar">
-    <div class="yinian-hot-label">
-      🔥 实时热点
+  <!-- MSN风格热点区域 -->
+  <div class="yinian-msn-container" id="msnGrid">
+    <!-- 刷新按钮 -->
+    <div class="yinian-msn-refresh">
+      <button onclick="refreshNews()">🔄 刷新资讯</button>
+      <span id="newsTime"></span>
     </div>
-    <div class="yinian-hot-scroll">
-      <div class="yinian-hot-items" id="hotItems"></div>
+    <div class="yinian-msn-grid">
+      <!-- 程序员资讯 -->
+      <div class="yinian-msn-col">
+        <div class="yinian-msn-header videos">💻 程序员资讯</div>
+        <div class="yinian-msn-body" id="videoItems"></div>
+      </div>
+      <!-- 微博热搜 -->
+      <div class="yinian-msn-col">
+        <div class="yinian-msn-header hotlist">🔥 微博热搜</div>
+        <div class="yinian-msn-body" id="hotItems"></div>
+      </div>
+      <!-- 科技头条 -->
+      <div class="yinian-msn-col">
+        <div class="yinian-msn-header headlines">📰 科技头条</div>
+        <div class="yinian-msn-body" id="headlineItems"></div>
+      </div>
+      <!-- GitHub热门 -->
+      <div class="yinian-msn-col">
+        <div class="yinian-msn-header social">🌐 GitHub热门</div>
+        <div class="yinian-msn-body" id="socialItems"></div>
+      </div>
     </div>
   </div>
 
@@ -1259,17 +1646,17 @@ body{
   <div class="yinian-footer-inner">
     <div class="yinian-footer-qr">
       <div class="yinian-qr-item">
-        <div class="yinian-qr-box">📱</div>
+        <div class="yinian-qr-box"><img src="https://cdn.jsdelivr.net/gh/13888285815/tools@master/qrcode-gzh.jpg" alt="公众号二维码" style="width:100%;height:100%;object-fit:contain;"></div>
         <div class="yinian-qr-name">关注公众号</div>
         <div class="yinian-qr-desc">获取最新干货</div>
       </div>
       <div class="yinian-qr-item">
-        <div class="yinian-qr-box">👥</div>
+        <div class="yinian-qr-box"><img src="https://cdn.jsdelivr.net/gh/13888285815/tools@master/qrcode-founder.jpg" alt="创始人微信" style="width:100%;height:100%;object-fit:contain;"></div>
         <div class="yinian-qr-name">加创始人微信</div>
         <div class="yinian-qr-desc">进用户交流群</div>
       </div>
       <div class="yinian-qr-item">
-        <div class="yinian-qr-box">📩</div>
+        <div class="yinian-qr-box"><img src="https://cdn.jsdelivr.net/gh/13888285815/tools@master/qrcode-contact.jpg" alt="联系我们" style="width:100%;height:100%;object-fit:contain;"></div>
         <div class="yinian-qr-name">联系我们</div>
         <div class="yinian-qr-desc">合作 & 建议</div>
       </div>
@@ -1285,13 +1672,48 @@ body{
     </div>
     <div class="yinian-footer-copy">
       Copyright © 2026 云南意念科技有限责任公司<br>
-      <a href="#">滇ICP备10000001号-1</a> | 网站版本 v2026.03.26
+      <a href="#">滇ICP备16007314号-1</a> | 网站版本 v2026.06.20
     </div>
   </div>
 </footer>
 
 <!-- 回顶部 -->
 <button class="yinian-back-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- 智能客服悬浮按钮 -->
+<button class="chatbot-float-btn" id="chatbotFloatBtn" onclick="toggleChatbot()" title="智能客服">
+  💬
+</button>
+
+<!-- 智能客服弹窗 -->
+<div class="chatbot-modal" id="chatbotModal">
+  <div class="chatbot-container">
+    <div class="chatbot-header">
+      <div class="chatbot-avatar">🤖</div>
+      <div class="chatbot-title">
+        <h3>智能客服助手</h3>
+        <p>在线为您解答问题</p>
+      </div>
+      <div class="chatbot-header-actions">
+        <button class="chatbot-clear-btn" onclick="clearChatHistory()" title="清除聊天记录">🗑️</button>
+        <button class="chatbot-close" onclick="toggleChatbot()">×</button>
+      </div>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages">
+      <div class="chatbot-message bot">
+        <div class="chatbot-msg-avatar">🤖</div>
+        <div>
+          <div class="chatbot-msg-bubble">您好！我是意念科技的智能客服助手，请问有什么可以帮助您的？</div>
+          <div class="chatbot-msg-time">刚刚</div>
+        </div>
+      </div>
+    </div>
+    <div class="chatbot-input-area">
+      <input type="text" class="chatbot-input" id="chatbotInput" placeholder="输入您的问题..." onkeypress="if(event.key==='Enter')sendChatMessage()">
+      <button class="chatbot-send" id="chatbotSend" onclick="sendChatMessage()">发送</button>
+    </div>
+  </div>
+</div>
 
 <script>
 /* ==================== 用户系统 ==================== */
@@ -1311,10 +1733,12 @@ function init() {
   checkAuth();
   renderTools();
   renderWechatGrid();
-  renderHot();
+  renderAllHot();
   initTabs();
   initCaptchas();
   initAuthTabs();
+  // 每5分钟刷新热点
+  setInterval(renderAllHot, 5 * 60 * 1000);
 }
 
 // 检查登录状态
@@ -1768,6 +2192,311 @@ var toolData = {
   ],
 };
 
+/* ==================== 案例数据 ==================== */
+var caseData = [
+  {
+    id: 15,
+    title: "中国教材电子课本",
+    desc: "在线PDF教材浏览平台，支持目录树导航、页面缩略图、缩放控制、画笔/荧光笔标注、书签、全屏阅读及快捷键操作，适配桌面与移动端。",
+    icon: "📖",
+    tags: ["电子课本", "PDF阅读", "在线教育", "标注工具"],
+    date: "2026-06",
+    url: "https://13888285815.github.io/ChinaTextbook-Pages/",
+    demo: "https://13888285815.github.io/ChinaTextbook-Pages/",
+    demoList: [
+      { name: "📖 在线体验", url: "https://13888285815.github.io/ChinaTextbook-Pages/" }
+    ]
+  },
+  {
+    id: 14,
+    title: "在线教育平台",
+    desc: "免费在线题库刷题平台，专注初中英语考点，支持题目练习、答题记录与成绩分析，助力中考备考。",
+    icon: "📚",
+    tags: ["在线教育", "题库系统", "初中英语", "Flask"],
+    date: "2026-05",
+    url: "https://13888285815.github.io/traecn-exam-system/",
+    demo: "https://13888285815.github.io/traecn-exam-system/",
+    demoList: [
+      { name: "📚 在线体验", url: "https://13888285815.github.io/traecn-exam-system/" }
+    ]
+  },
+  {
+    id: 13,
+    title: "在线考试系统",
+    desc: "支持 PDF 试卷导入与自动解析的在线考试平台，提供出题、作答、智能评分与成绩分析全流程，适用于学校及培训机构场景。",
+    icon: "📋",
+    tags: ["在线教育", "考试系统", "PDF解析", "智能评分"],
+    date: "2026-05",
+    url: "https://13888285815.github.io/workbuddy-exam-system/",
+    demo: "https://13888285815.github.io/workbuddy-exam-system/",
+    demoList: [
+      { name: "📋 在线体验", url: "https://13888285815.github.io/workbuddy-exam-system/" }
+    ]
+  },
+  {
+    id: 16,
+    title: "AI智能答题系统",
+    desc: "面向K12学生的AI智能答题平台，支持小学/初中/高中多学科题库、智能推荐、答题记录追踪，自适应学习路径。",
+    icon: "📝",
+    tags: ["K12教育", "智能答题", "题库系统", "AI推荐"],
+    date: "2026-06",
+    url: "https://13888285815.github.io/workbuddy-ai-quiz/",
+    demo: "https://13888285815.github.io/workbuddy-ai-quiz/",
+    demoList: [
+      { name: "📝 在线体验", url: "https://13888285815.github.io/workbuddy-ai-quiz/" }
+    ]
+  },
+  {
+    id: 12,
+    title: "意念LineOffice - AI在线文档",
+    desc: "零依赖的AI文档编辑器，支持实时协作、内容编辑、表格图表思维导图，以及导出Markdown/PDF等多种格式。",
+    icon: "📝",
+    tags: ["在线文档", "AI编辑", "实时协作", "Office"],
+    date: "2026-04",
+    url: "https://13888285815.github.io/codebuddy-jitword/example/offline-demo.html",
+    demo: "https://13888285815.github.io/codebuddy-jitword/example/offline-demo.html",
+    demoList: [
+      { name: "📝 在线体验", url: "https://13888285815.github.io/codebuddy-jitword/example/offline-demo.html" }
+    ]
+  },
+  {
+    id: 10,
+    title: "2D在线绘图",
+    desc: "Pinta Web 在线绘图工具，支持铅笔、画笔、橡皮擦、油漆桶、文字、矩形等多种绘图工具，具备图层管理、历史记录、图像效果（模糊/锐化/浮雕/灰度/反色/复古）、画布旋转翻转、PNG/JPG导出等功能。",
+    icon: "🎨",
+    tags: ["在线绘图", "图层管理", "图像编辑", "Canvas"],
+    date: "2026-06",
+    url: "https://13888285815.github.io/workbuddy-Pinta/",
+    demo: "https://13888285815.github.io/workbuddy-Pinta/",
+    demoList: [
+      { name: "🎨 在线体验", url: "https://13888285815.github.io/workbuddy-Pinta/" }
+    ]
+  },
+  {
+    id: 9,
+    title: "3D在线绘图",
+    desc: "SuperSplat 在线3D高斯溅射（Gaussian Splatting）编辑器，支持导入PLY/Splat/SOG格式3D模型，提供场景管理、变换控制、色彩调色、色调映射、选择编辑、动画时间轴、LOD生成等功能，可导出图片/视频并在线发布3D模型。",
+    icon: "🧊",
+    tags: ["3D绘图", "高斯溅射", "Gaussian Splatting", "WebGL"],
+    date: "2026-06",
+    url: "https://13888285815.github.io/workbuddy-supersplat/",
+    demo: "https://13888285815.github.io/workbuddy-supersplat/",
+    demoList: [
+      { name: "🧊 在线体验", url: "https://13888285815.github.io/workbuddy-supersplat/" }
+    ]
+  },
+  {
+    id: 11,
+    title: "3D在线建房",
+    desc: "3D房屋建模与可视化工具，支持在线编辑和实时预览。",
+    icon: "🏗️",
+    tags: ["3D建模", "WebGL", "可视化"],
+    date: "2026-04",
+    url: "https://editor.yndxw.com/",
+    demo: "https://editor.yndxw.com/",
+    demoList: [
+      { name: "🏗️ 在线体验", url: "https://editor.yndxw.com/" }
+    ]
+  },
+  {
+    id: 0,
+    title: "AllOSSystem - 全操作系统在线体验平台",
+    desc: "基于 v86 WebAssembly 技术，在浏览器中直接运行 Windows/Linux/DOS 等16款经典操作系统，无需安装，一键启动。",
+    icon: "🖥️",
+    tags: ["操作系统", "Vue.js", "WebAssembly", "v86"],
+    date: "2026-04",
+    url: "https://github.com/13888285815/AllOSSystem",
+    demo: "https://13888285815.github.io/AllOSSystem/",
+    demoList: [
+      { name: "🖥️ 在线体验", url: "https://13888285815.github.io/AllOSSystem/" }
+    ]
+  },
+  {
+    id: 1,
+    title: "惠卖 - 社交电商平台",
+    desc: "功能完善的社交电商解决方案，支持商品展示、购物车、订单管理、支付集成等核心电商功能。",
+    icon: "🛒",
+    tags: ["电商平台", "Vue.js", "社交电商"],
+    date: "2026-04",
+    url: "https://github.com/13888285815/huimart-ecommerce",
+    demo: "https://13888285815.github.io/huimart-ecommerce/",
+    demoList: [
+      { name: "🏠 首页", url: "https://13888285815.github.io/huimart-ecommerce/" },
+      { name: "🏪 商家平台", url: "https://13888285815.github.io/huimart-ecommerce/platform.html" }
+    ]
+  },
+  {
+    id: 2,
+    title: "意念ERP - 企业资源管理系统",
+    desc: "功能全面的企业ERP管理系统，支持订单管理、库存管理、财务统计等核心模块。",
+    icon: "🏢",
+    tags: ["ERP", "企业管理", "Web App"],
+    date: "2026-04",
+    url: "https://github.com/13888285815/accioerp",
+    demo: "https://13888285815.github.io/accioerp/",
+    demoList: [
+      { name: "🏢 在线体验", url: "https://13888285815.github.io/accioerp/" }
+    ]
+  },
+  {
+    id: 2,
+    title: "意念大学平台",
+    desc: "多语言支持的在线学习平台，集成了AI分析和订阅计费系统。支持中英法德日阿等6种语言。",
+    icon: "🎓",
+    tags: ["Vue.js", "Node.js", "AI集成", "订阅系统"],
+    date: "2026-03",
+    url: "https://github.com/13888285815/MindUniversity",
+    demo: "https://13888285815.github.io/MindUniversity/",
+    demoList: [
+      { name: "🌐 在线体验", url: "https://13888285815.github.io/MindUniversity/?v=20260403d" }
+    ]
+  },
+  {
+    id: 3,
+    title: "证券智慧分析平台",
+    desc: "类银河证券智慧星 + 同花顺的证券分析平台，集成AI分析、订阅计费、API Token管理。",
+    icon: "📈",
+    tags: ["金融科技", "AI分析", "订阅系统"],
+    date: "2026-03",
+    url: "https://github.com/13888285815/stock",
+    demo: "https://yndxw.com",
+    demoList: [
+      { name: "🌐 在线体验", url: "https://yndxw.com" }
+    ]
+  },
+  {
+    id: 4,
+    title: "通用计算器",
+    desc: "支持普通/科学/金融三种模式的计算器应用，完美适配iPhone和iPad响应式布局。",
+    icon: "🧮",
+    tags: ["Web App", "iOS", "响应式"],
+    date: "2026-04",
+    url: "https://github.com/13888285815/CalcMaster-web",
+    demo: "https://13888285815.github.io/CalcMaster-web/",
+    demoList: [
+      { name: "📱 iPhone版", url: "https://13888285815.github.io/CalcMaster-web/CalcMaster.html" },
+      { name: "📟 iPad版", url: "https://13888285815.github.io/CalcMaster-web/CalcMaster-iPad.html" }
+    ]
+  },
+  {
+    id: 5,
+    title: "在线文字转语音",
+    desc: "VibeVoice 在线文字转语音工具，支持中英日等多语言文本合成自然流畅的语音，可选多种音色风格，支持语速/音调调节，一键生成并在线试听/下载音频，适用于有声读物、视频配音、播客制作等场景。",
+    icon: "🔊",
+    tags: ["文字转语音", "TTS", "AI语音", "音频生成"],
+    date: "2026-06",
+    url: "https://13888285815.github.io/workbuddy-VibeVoice/",
+    demo: "https://13888285815.github.io/workbuddy-VibeVoice/",
+    demoList: [
+      { name: "🔊 在线体验", url: "https://13888285815.github.io/workbuddy-VibeVoice/" }
+    ]
+  },
+  {
+    id: 6,
+    title: "十日终焉 - 克苏鲁RPG游戏",
+    desc: "基于热门小说《十日终焉》改编的互动RPG游戏，支持角色视角切换、羁绊系统和多种结局。",
+    icon: "🎭",
+    tags: ["游戏开发", "HTML5", "互动叙事"],
+    date: "2026-03",
+    url: "https://github.com/13888285815/shiriyudou",
+    demo: "https://13888285815.github.io/shiriyudou/",
+    demoList: [
+      { name: "🎮 开始游戏", url: "https://13888285815.github.io/shiriyudou/index.html" }
+    ]
+  },
+  {
+    id: 7,
+    title: "狂人日记 - 克苏鲁文字冒险",
+    desc: "以鲁迅《狂人日记》为题材，克苏鲁风格的文字冒险游戏，融合民国暗黑美学。",
+    icon: "📖",
+    tags: ["文字冒险", "克苏鲁", "互动叙事"],
+    date: "2026-03",
+    url: "https://github.com/13888285815/madman-diary",
+    demo: "https://13888285815.github.io/madman-diary/",
+    demoList: [
+      { name: "📖 开始游戏", url: "https://13888285815.github.io/madman-diary/index.html" }
+    ]
+  },
+  {
+    id: 8,
+    title: "土豆兄弟 - 双人合作闯关",
+    desc: "经典双人合作闯关游戏，控制两个角色解开关卡谜题，收集宝石。",
+    icon: "🥔",
+    tags: ["HTML5游戏", "双人游戏", "合作"],
+    date: "2026-03",
+    url: "https://github.com/13888285815/potato-brothers",
+    demo: "https://13888285815.github.io/potato-brothers/potato-brothers.html",
+    demoList: [
+      { name: "🎮 双人游戏", url: "https://13888285815.github.io/potato-brothers/potato-brothers.html" }
+    ]
+  },
+  {
+    id: 9,
+    title: "BoxHead 3 - 僵尸生存战",
+    desc: "经典俯视角僵尸生存射击游戏，多种武器选择，支持双人合作模式。",
+    icon: "🧟",
+    tags: ["HTML5游戏", "Canvas", "射击"],
+    date: "2026-03",
+    url: "https://github.com/13888285815/boxhead3",
+    demo: "https://13888285815.github.io/boxhead3/BoxHead3.html",
+    demoList: [
+      { name: "🎮 开始游戏", url: "https://13888285815.github.io/boxhead3/BoxHead3.html" }
+    ]
+  },
+  {
+    id: 12,
+    title: "网页红警 - 在线即时战略",
+    desc: "经典即时战略游戏网页版，支持多人在线对战，完整还原基地建造、资源采集和战斗系统。",
+    icon: "🎖️",
+    tags: ["即时战略", "Canvas", "WebGL"],
+    date: "2026-06",
+    url: "https://github.com/13888285815/hermesredalert",
+    demo: "https://13888285815.github.io/hermesredalert/",
+    demoList: [
+      { name: "🎮 在线体验", url: "https://13888285815.github.io/hermesredalert/" }
+    ]
+  },
+  {
+    id: 13,
+    title: "网页魔兽 - 3D像素世界",
+    desc: "基于Minecraft风格的3D网页游戏，支持创造模式、生存模式和多人协作建造。",
+    icon: "🧊",
+    tags: ["3D游戏", "WebGL", "像素风"],
+    date: "2026-06",
+    url: "https://github.com/13888285815/workbuddy-world-of-claudecraft",
+    demo: "https://13888285815.github.io/workbuddy-world-of-claudecraft/",
+    demoList: [
+      { name: "🎮 在线体验", url: "https://13888285815.github.io/workbuddy-world-of-claudecraft/" }
+    ]
+  },
+  {
+    id: 17,
+    title: "意念地球 - GIS地图平台",
+    desc: "基于MapLibre的在线GIS地图平台，支持基础地图、图层管理、数据加载、绘制编辑、空间分析、样式设置、数据导出及外部资源集成，提供8大功能模块37项子功能。",
+    icon: "🌍",
+    tags: ["GIS地图", "MapLibre", "空间分析", "WebGL"],
+    date: "2026-06",
+    url: "https://github.com/13888285815/workbuddy-GeoLibre",
+    demo: "https://13888285815.github.io/workbuddy-GeoLibre/",
+    demoList: [
+      { name: "🌍 在线体验", url: "https://13888285815.github.io/workbuddy-GeoLibre/" }
+    ]
+  },
+  {
+    id: 18,
+    title: "意念诗文 - 中华诗词库",
+    desc: "最全中华古诗词数据库，包含5.5万首唐诗、26万首宋诗、2.1万首宋词及其他古典文集，涵盖唐宋两朝近1.4万古诗人与两宋1564位词人，支持在线浏览与检索。",
+    icon: "📚",
+    tags: ["古诗词", "唐诗宋词", "古典文集", "JSON数据"],
+    date: "2026-06",
+    url: "https://github.com/13888285815/workbuddy-chinese-poetry",
+    demo: "https://13888285815.github.io/workbuddy-chinese-poetry/",
+    demoList: [
+      { name: "📚 在线体验", url: "https://13888285815.github.io/workbuddy-chinese-poetry/" }
+    ]
+  }
+];
+
 /* ==================== 公众号数据 ==================== */
 var wechatAccounts = [
   { name:"新媒体运营大叔", desc:"10万+运营干货", avatar:"🐻" },
@@ -1803,6 +2532,32 @@ function renderTools() {
   renderToolSection('image-tools', toolData.image);
   renderToolSection('video-tools', toolData.video);
   renderToolSection('ecommerce-tools', toolData.ecommerce);
+  renderCases();
+}
+
+function renderCases() {
+  var container = document.getElementById('cases-grid');
+  if (!container) return;
+  var html = '';
+  caseData.forEach(function(c) {
+    var demoUrl = (c.demoList && c.demoList.length > 0) ? c.demoList[0].url : c.demo;
+    html += '<a href="' + demoUrl + '" target="_blank" class="yinian-case-card">';
+    html += '<div class="yinian-case-thumb">' + c.icon;
+    html += '<span class="yinian-case-badge">' + c.date + '</span></div>';
+    html += '<div class="yinian-case-body">';
+    html += '<div class="yinian-case-title">' + c.title + '</div>';
+    html += '<div class="yinian-case-desc">' + c.desc + '</div>';
+    html += '<div class="yinian-case-tags">';
+    c.tags.forEach(function(tag) {
+      html += '<span class="yinian-case-tag">' + tag + '</span>';
+    });
+    html += '</div>';
+    html += '<div class="yinian-case-footer">';
+    html += '<span class="yinian-case-date">' + c.date + '</span>';
+    html += '<span class="yinian-case-try">点击体验 →</span>';
+    html += '</div></div></a>';
+  });
+  container.innerHTML = html;
 }
 
 function renderToolSection(containerId, tools) {
@@ -1831,14 +2586,411 @@ function renderWechatGrid() {
   document.getElementById('wechat-grid').innerHTML = html;
 }
 
-function renderHot() {
+// MSN风格热点数据 - 全部使用公开免费资源
+var msnData = {
+  videos: [
+    { title: '【官方】黑马程序员Python入门视频', tag: 'B站', url: 'https://www.bilibili.com/video/BV1qW411N7aU/' },
+    { title: '【官方】李宏毅机器学习课程完整版', tag: 'B站', url: 'https://www.bilibili.com/video/BV1JE411g7XF/' },
+    { title: '【官方】尚硅谷Vue3全家桶教程', tag: 'B站', url: 'https://www.bilibili.com/video/BV1hm4y1A7qS/' },
+    { title: '【官方】GitHub官方年度回顾', tag: 'GitHub', url: 'https://github.com' },
+    { title: '【官方】CSDN官方技术学院', tag: 'CSDN', url: 'https://www.csdn.net/' },
+    { title: '【官方】B站Web前端学习路线', tag: 'B站', url: 'https://www.bilibili.com/' },
+    { title: '【官方】React 官方教程', tag: 'React', url: 'https://react.dev/' },
+    { title: '【官方】TypeScript 官方文档', tag: 'TS', url: 'https://www.typescriptlang.org/' }
+  ],
+  hotlist: [],
+  headlines: [
+    { title: '36氪科技最新资讯', source: '36氪', url: 'https://36kr.com/' },
+    { title: '虎嗅网科技资讯', source: '虎嗅', url: 'https://www.huxiu.com/' },
+    { title: '爱范儿科技媒体', source: '爱范儿', url: 'https://www.ifanr.com/' },
+    { title: '极客公园科技资讯', source: '极客公园', url: 'https://www.geekpark.net/' },
+    { title: '钛媒体科技资讯', source: '钛媒体', url: 'https://www.tmtpost.com/' },
+    { title: 'PingWest科技资讯', source: 'PingWest', url: 'https://www.pingwest.com/' },
+    { title: '创业邦科技资讯', source: '创业邦', url: 'https://www.cyzone.cn/' },
+    { title: '少数派科技资讯', source: '少数派', url: 'https://sspai.com/' }
+  ],
+  social: [
+    { title: 'GitHub Trending 热门项目', platform: 'GitHub', url: 'https://github.com/trending' },
+    { title: 'Stack Overflow 技术问答', platform: 'Stack', url: 'https://stackoverflow.com/' },
+    { title: '掘金技术社区', platform: '掘金', url: 'https://juejin.cn/' },
+    { title: 'CSDN程序员社区', platform: 'CSDN', url: 'https://www.csdn.net/' },
+    { title: '开源中国技术社区', platform: '开源中国', url: 'https://www.oschina.net/' },
+    { title: 'V2EX技术社区', platform: 'V2EX', url: 'https://www.v2ex.com/' },
+    { title: '知乎技术问答', platform: '知乎', url: 'https://www.zhihu.com/' },
+    { title: 'SegmentFault问答社区', platform: 'SF', url: 'https://segmentfault.com/' }
+  ]
+};
+
+// 已显示过的标题记录（用于去重）
+var shownTitles = {
+  videos: [],
+  hotlist: [],
+  headlines: [],
+  social: []
+};
+
+// 刷新新闻时间戳
+var lastRefresh = null;
+
+// 获取微博热搜（公开API）
+async function fetchWeiboHot() {
+  try {
+    const response = await fetch('https://tenapi.org.cn/weibo/?num=8', {
+      headers: { 'User-Agent': 'Mozilla/5.0' }
+    });
+    const data = await response.json();
+    if (data.code === 200 && data.data) {
+      return data.data.map((item, i) => ({
+        title: item.word || item.title,
+        url: 'https://s.weibo.com/weibo?q=' + encodeURIComponent(item.word || item.title)
+      }));
+    }
+  } catch (e) {}
+  return null;
+}
+
+// 获取GitHub Trending（公开API）
+async function fetchGitHubTrending() {
+  try {
+    const response = await fetch('https://api.github.com/search/repositories?q=stars:>1000&sort=stars&order=desc&per_page=8', {
+      headers: { 'User-Agent': 'Mozilla/5.0' }
+    });
+    const data = await response.json();
+    if (data.items) {
+      return data.items.map((item, i) => ({
+        title: item.full_name + ' ⭐' + item.stargazers_count,
+        url: item.html_url
+      }));
+    }
+  } catch (e) {}
+  return null;
+}
+
+// 获取B站热门视频（公开API）
+async function fetchBilibiliHot() {
+  try {
+    const response = await fetch('https://api.bilibili.com/x/web-interface/ranking/v2?type=all', {
+      headers: { 
+        'User-Agent': 'Mozilla/5.0',
+        'Referer': 'https://www.bilibili.com/'
+      }
+    });
+    const data = await response.json();
+    if (data.code === 0 && data.data && data.data.list) {
+      return data.data.list.slice(0, 12).map((item) => ({
+        title: item.title,
+        tag: 'B站',
+        url: 'https://www.bilibili.com/video/' + item.bvid,
+        author: item.owner.name,
+        play: item.stat.view,
+        coins: item.stat.coin,
+        likes: item.stat.like
+      }));
+    }
+  } catch (e) {}
+  return null;
+}
+
+// 刷新新闻功能（带去重）- 同时刷新4栏32条
+async function refreshNews() {
+  var timeEl = document.getElementById('newsTime');
+  timeEl.textContent = '加载中...';
+  
+  // ===== 程序员资讯备用数据 =====
+  var backupVideos = [
+    { title: '【官方】黑马程序员Python入门视频', tag: 'B站', url: 'https://www.bilibili.com/video/BV1qW411N7aU/' },
+    { title: '【官方】李宏毅机器学习课程完整版', tag: 'B站', url: 'https://www.bilibili.com/video/BV1JE411g7XF/' },
+    { title: '【官方】尚硅谷Vue3全家桶教程', tag: 'B站', url: 'https://www.bilibili.com/video/BV1hm4y1A7qS/' },
+    { title: '【官方】GitHub官方年度回顾', tag: 'GitHub', url: 'https://github.com' },
+    { title: '【官方】CSDN官方技术学院', tag: 'CSDN', url: 'https://www.csdn.net/' },
+    { title: '【官方】B站Web前端学习路线', tag: 'B站', url: 'https://www.bilibili.com/' },
+    { title: '【官方】React 官方教程', tag: 'React', url: 'https://react.dev/' },
+    { title: '【官方】TypeScript 官方文档', tag: 'TS', url: 'https://www.typescriptlang.org/' },
+    { title: '【官方】Python3.14 新特性教程', tag: 'B站', url: 'https://www.bilibili.com/' },
+    { title: '【官方】Go语言入门实战', tag: 'B站', url: 'https://www.bilibili.com/' },
+    { title: '【官方】Rust 编程实战课程', tag: 'B站', url: 'https://www.bilibili.com/' },
+    { title: '【官方】Docker 容器化部署', tag: 'B站', url: 'https://www.bilibili.com/' },
+    { title: '【官方】Redis 缓存实战', tag: 'B站', url: 'https://www.bilibili.com/' },
+    { title: '【官方】MySQL 数据库优化', tag: 'B站', url: 'https://www.bilibili.com/' },
+    { title: '【官方】Node.js 后端开发', tag: 'B站', url: 'https://www.bilibili.com/' }
+  ];
+  
+  // ===== 微博热搜备用数据 =====
+  var backupHotlist = [
+    { title: 'GitHub Copilot X 发布重大更新', url: 'https://github.blog/' },
+    { title: '2026年AI编程工具发展趋势', url: 'https://36kr.com/' },
+    { title: 'Vue 3.5 新特性解析', url: 'https://blog.csdn.net/' },
+    { title: 'React 19 正式版发布', url: 'https://react.dev/' },
+    { title: 'TypeScript 6.0 新功能一览', url: 'https://devblogs.microsoft.com/' },
+    { title: 'Rust 编程语言入门指南', url: 'https://www.rust-lang.org/' },
+    { title: 'Node.js 24 新特性预告', url: 'https://nodejs.org/' },
+    { title: 'Docker 2026 新版本发布', url: 'https://www.docker.com/' },
+    { title: 'Python 3.14 新版本发布', url: 'https://www.python.org/' },
+    { title: 'Go 1.24 正式版发布', url: 'https://go.dev/' },
+    { title: 'Java 25 新特性抢先看', url: 'https://www.oracle.com/java/' },
+    { title: 'Next.js 16 发布', url: 'https://nextjs.org/' },
+    { title: 'Tailwind CSS 4.0 发布', url: 'https://tailwindcss.com/' },
+    { title: 'Webpack 6 正式发布', url: 'https://webpack.js.org/' },
+    { title: 'Bun 2.0 性能大幅提升', url: 'https://bun.sh/' },
+    { title: 'Deno 3.0 发布', url: 'https://deno.land/' },
+    { title: 'Spring Boot 3.4 新特性', url: 'https://spring.io/projects/spring-boot' },
+    { title: 'Nuxt 4 发布', url: 'https://nuxt.com/' },
+    { title: 'Astro 5.0 发布', url: 'https://astro.build/' },
+    { title: 'Svelte 6 发布', url: 'https://svelte.dev/' }
+  ];
+  
+  // ===== 科技头条备用数据 =====
+  var backupHeadlines = [
+    { title: '36氪科技最新资讯', source: '36氪', url: 'https://36kr.com/' },
+    { title: '虎嗅网科技资讯', source: '虎嗅', url: 'https://www.huxiu.com/' },
+    { title: '爱范儿科技媒体', source: '爱范儿', url: 'https://www.ifanr.com/' },
+    { title: '极客公园科技资讯', source: '极客公园', url: 'https://www.geekpark.net/' },
+    { title: '钛媒体科技资讯', source: '钛媒体', url: 'https://www.tmtpost.com/' },
+    { title: 'PingWest科技资讯', source: 'PingWest', url: 'https://www.pingwest.com/' },
+    { title: '创业邦科技资讯', source: '创业邦', url: 'https://www.cyzone.cn/' },
+    { title: '少数派科技资讯', source: '少数派', url: 'https://sspai.com/' },
+    { title: 'AI 前沿技术资讯', source: '机器之心', url: 'https://jiqizhixin.com/' },
+    { title: '量子位科技资讯', source: '量子位', url: 'https://www.qbitai.com/' },
+    { title: '品玩科技资讯', source: '品玩', url: 'https://www.pinwau.com/' },
+    { title: '科技日报资讯', source: '科技日报', url: 'https://digitalpaper.stdaily.com/' },
+    { title: 'C114通信资讯', source: 'C114', url: 'https://www.c114.com.cn/' },
+    { title: 'DoNews科技资讯', source: 'DoNews', url: 'https://www.donews.com/' },
+    { title: '雷锋网科技资讯', source: '雷锋网', url: 'https://www.leiphone.com/' }
+  ];
+  
+  // ===== GitHub热门备用数据 =====
+  var backupSocial = [
+    { title: 'GitHub Trending Top 开源项目', url: 'https://github.com/trending' },
+    { title: 'Stack Overflow 技术问答', url: 'https://stackoverflow.com/' },
+    { title: '掘金本周热文', url: 'https://juejin.cn/' },
+    { title: 'CSDN 技术周报', url: 'https://www.csdn.net/' },
+    { title: '开源中国周报', url: 'https://www.oschina.net/' },
+    { title: 'V2EX 热门话题', url: 'https://www.v2ex.com/' },
+    { title: '知乎技术精选', url: 'https://www.zhihu.com/' },
+    { title: 'SegmentFault 热榜', url: 'https://segmentfault.com/' },
+    { title: 'Dev.to 热门文章', url: 'https://dev.to/' },
+    { title: 'Hacker News 热榜', url: 'https://news.ycombinator.com/' },
+    { title: 'Reddit 编程区', url: 'https://www.reddit.com/r/programming/' },
+    { title: 'Twitter/X 技术趋势', url: 'https://twitter.com/' },
+    { title: 'Product Hunt 周榜', url: 'https://producthunt.com/' },
+    { title: 'Lobsters 热门', url: 'https://lobste.rs/' },
+    { title: 'TechCrunch 科技', url: 'https://techcrunch.com/' }
+  ];
+  
+  // 去重函数：过滤掉已显示过的标题
+  function filterDuplicates(data, shownList) {
+    var filtered = [];
+    var seen = new Set(shownList);
+    for (var i = 0; i < data.length; i++) {
+      if (!data[i].title) continue;
+      // 清理标题用于比较（去除特殊字符，统一大小写）
+      var normalizedTitle = data[i].title.replace(/[^\w\u4e00-\u9fa5]/g, '').toLowerCase();
+      if (normalizedTitle && !seen.has(normalizedTitle)) {
+        filtered.push(data[i]);
+        seen.add(normalizedTitle);
+      }
+    }
+    return filtered;
+  }
+  
+  // 更新已显示标题记录
+  function updateShownTitles(key, items) {
+    items.forEach(function(item) {
+      if (!item.title) return;
+      var normalizedTitle = item.title.replace(/[^\w\u4e00-\u9fa5]/g, '').toLowerCase();
+      if (normalizedTitle && shownTitles[key].indexOf(normalizedTitle) === -1) {
+        shownTitles[key].push(normalizedTitle);
+      }
+    });
+    // 限制记录数量，最多保留100条
+    if (shownTitles[key].length > 100) {
+      shownTitles[key] = shownTitles[key].slice(-100);
+    }
+  }
+  
+  // ===== 刷新程序员资讯（Videos）=====
+  // 优先获取B站热门视频，失败则使用备用数据
+  var bilibiliData = await fetchBilibiliHot();
+  var newVideos = [];
+  if (bilibiliData && bilibiliData.length > 0) {
+    var filteredBilibili = filterDuplicates(bilibiliData, shownTitles.videos);
+    newVideos = newVideos.concat(filteredBilibili);
+  }
+  // 如果不够8条，从备用数据中补充
+  if (newVideos.length < 8) {
+    var filteredBackup = filterDuplicates(backupVideos, shownTitles.videos);
+    var needed = 8 - newVideos.length;
+    newVideos = newVideos.concat(filteredBackup.slice(0, needed));
+  }
+  updateShownTitles('videos', newVideos);
+  msnData.videos = newVideos.slice(0, 8);
+  
+  // ===== 刷新微博热搜（Hotlist）=====
+  var weiboData = await fetchWeiboHot();
+  var newHotlist = [];
+  if (weiboData && weiboData.length > 0) {
+    var filteredWeibo = filterDuplicates(weiboData, shownTitles.hotlist);
+    newHotlist = newHotlist.concat(filteredWeibo);
+  }
+  // 如果不够8条，从备用数据中补充
+  if (newHotlist.length < 8) {
+    var filteredBackup = filterDuplicates(backupHotlist, shownTitles.hotlist);
+    var needed = 8 - newHotlist.length;
+    newHotlist = newHotlist.concat(filteredBackup.slice(0, needed));
+  }
+  updateShownTitles('hotlist', newHotlist);
+  msnData.hotlist = newHotlist.slice(0, 8);
+  
+  // ===== 刷新科技头条（Headlines）=====
+  var filteredHeadlines = filterDuplicates(backupHeadlines, shownTitles.headlines);
+  var newHeadlines = filteredHeadlines.slice(0, 8);
+  updateShownTitles('headlines', newHeadlines);
+  msnData.headlines = newHeadlines;
+  
+  // ===== 刷新GitHub热门（Social）=====
+  var githubData = await fetchGitHubTrending();
+  var newSocial = [];
+  if (githubData && githubData.length > 0) {
+    var filteredGithub = filterDuplicates(githubData, shownTitles.social);
+    newSocial = newSocial.concat(filteredGithub);
+  }
+  // 如果不够8条，从备用数据中补充
+  if (newSocial.length < 8) {
+    var filteredBackupSocial = filterDuplicates(backupSocial, shownTitles.social);
+    var neededSocial = 8 - newSocial.length;
+    newSocial = newSocial.concat(filteredBackupSocial.slice(0, neededSocial));
+  }
+  updateShownTitles('social', newSocial);
+  msnData.social = newSocial.slice(0, 8);
+  
+  // 渲染所有4个栏目
+  lastRefresh = new Date();
+  renderVideos();
+  renderHot();
+  renderHeadlines();
+  renderSocial();
+  timeEl.textContent = '更新: ' + lastRefresh.toLocaleTimeString();
+}
+
+// 页面加载时自动刷新
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(refreshNews, 1000);
+});
+
+function renderVideos() {
+  var container = document.getElementById('videoItems');
+  if (!container) return;
   var html = '';
-  hotTopics.forEach(function(topic, i) {
-    html += '<div class="yinian-hot-item">';
-    html += '<span class="num ' + (i < 3 ? 'hot' : '') + '">' + (i + 1) + '</span>';
-    html += '<span>' + topic + '</span></div>';
+  // 过滤空标题，确保只显示有内容的条目
+  var validItems = msnData.videos.filter(function(item) {
+    return item.title && item.title.trim().length > 0;
+  }).slice(0, 8);
+  
+  validItems.forEach(function(item, i) {
+    var numClass = i === 0 ? 'top' : i === 1 ? 'second' : i === 2 ? 'third' : '';
+    html += '<a href="' + item.url + '" target="_blank" class="yinian-msn-item">';
+    html += '<span class="yinian-msn-num ' + numClass + '">' + (i + 1) + '</span>';
+    html += '<div class="yinian-msn-text">';
+    html += '<span class="yinian-msn-tag">' + escapeHtml(item.tag || 'B站') + '</span>';
+    
+    // 显示视频标题
+    html += '<div class="video-title">' + escapeHtml(item.title) + '</div>';
+    
+    // 如果有额外信息（播放量、点赞等），显示在下方
+    if (item.play || item.author) {
+      html += '<div class="video-info">';
+      if (item.author) {
+        html += '<span class="video-author">' + escapeHtml(item.author) + '</span>';
+      }
+      if (item.play) {
+        html += '<span class="video-stat">▶ ' + formatNumber(item.play) + '</span>';
+      }
+      if (item.likes) {
+        html += '<span class="video-stat">👍 ' + formatNumber(item.likes) + '</span>';
+      }
+      html += '</div>';
+    }
+    
+    html += '</div></a>';
   });
-  document.getElementById('hotItems').innerHTML = html;
+  container.innerHTML = html;
+}
+
+// 格式化数字（用于播放量显示）
+function formatNumber(num) {
+  if (num >= 100000000) {
+    return (num / 100000000).toFixed(1) + '亿';
+  } else if (num >= 10000) {
+    return (num / 10000).toFixed(1) + '万';
+  } else if (num >= 1000) {
+    return (num / 1000).toFixed(1) + 'k';
+  }
+  return num.toString();
+}
+
+function renderHot() {
+  var container = document.getElementById('hotItems');
+  if (!container) return;
+  var html = '';
+  // 过滤空标题，确保只显示有内容的条目
+  var validItems = msnData.hotlist.filter(function(item) {
+    return item.title && item.title.trim().length > 0;
+  }).slice(0, 8);
+  
+  validItems.forEach(function(item, i) {
+    var numClass = i === 0 ? 'top' : i === 1 ? 'second' : i === 2 ? 'third' : '';
+    html += '<a href="' + item.url + '" target="_blank" class="yinian-msn-item">';
+    html += '<span class="yinian-msn-num ' + numClass + '">' + (i + 1) + '</span>';
+    html += '<div class="yinian-msn-text">' + escapeHtml(item.title) + '</div>';
+    html += '</a>';
+  });
+  container.innerHTML = html;
+}
+
+function renderHeadlines() {
+  var container = document.getElementById('headlineItems');
+  if (!container) return;
+  var html = '';
+  // 过滤空标题，确保只显示有内容的条目
+  var validItems = msnData.headlines.filter(function(item) {
+    return item.title && item.title.trim().length > 0;
+  }).slice(0, 8);
+  
+  validItems.forEach(function(item, i) {
+    var numClass = i === 0 ? 'top' : i === 1 ? 'second' : i === 2 ? 'third' : '';
+    html += '<a href="' + item.url + '" target="_blank" class="yinian-msn-item">';
+    html += '<span class="yinian-msn-num ' + numClass + '">' + (i + 1) + '</span>';
+    html += '<div class="yinian-msn-text"><span class="yinian-msn-tag">' + escapeHtml(item.source || '来源') + '</span><div>' + escapeHtml(item.title) + '</div></div>';
+    html += '</a>';
+  });
+  container.innerHTML = html;
+}
+
+function renderSocial() {
+  var container = document.getElementById('socialItems');
+  if (!container) return;
+  var html = '';
+  // 过滤空标题，确保只显示有内容的条目
+  var validItems = msnData.social.filter(function(item) {
+    return item.title && item.title.trim().length > 0;
+  }).slice(0, 8);
+  
+  validItems.forEach(function(item, i) {
+    var numClass = i === 0 ? 'top' : i === 1 ? 'second' : i === 2 ? 'third' : '';
+    var tag = item.platform || item.tag || '链接';
+    html += '<a href="' + item.url + '" target="_blank" class="yinian-msn-item">';
+    html += '<span class="yinian-msn-num ' + numClass + '">' + (i + 1) + '</span>';
+    html += '<div class="yinian-msn-text"><span class="yinian-msn-tag">' + escapeHtml(tag) + '</span><div>' + escapeHtml(item.title) + '</div></div>';
+    html += '</a>';
+  });
+  container.innerHTML = html;
+}
+
+function renderAllHot() {
+  renderVideos();
+  renderHot();
+  renderHeadlines();
+  renderSocial();
 }
 
 /* ==================== 工具函数 ==================== */
@@ -1865,7 +3017,8 @@ function initTabs() {
       var secMap = {
         ai: 'sec-ai', paper: 'sec-paper', 'ai-all': 'sec-ai-all',
         content: 'sec-content', data: 'sec-data', design: 'sec-design',
-        image: 'sec-image', video: 'sec-video', ecommerce: 'sec-ecommerce'
+        image: 'sec-image', video: 'sec-video', ecommerce: 'sec-ecommerce',
+        cases: 'sec-cases', all: 'sec-ai', more: 'sec-ai'
       };
       var sec = document.getElementById(secMap[tabId] || 'sec-ai');
       if (sec) {
@@ -1883,6 +3036,355 @@ window.addEventListener('scroll', function() {
 
 /* ==================== 初始化 ==================== */
 init();
+
+/* ==================== 智能客服 ==================== */
+var chatHistory = [];
+var conversationContext = [];
+
+function toggleChatbot() {
+  var modal = document.getElementById('chatbotModal');
+  modal.classList.toggle('active');
+  
+  if (modal.classList.contains('active')) {
+    document.getElementById('chatbotInput').focus();
+    // 如果没有消息，显示欢迎
+    var messages = document.getElementById('chatbotMessages');
+    if (messages.children.length <= 1) {
+      showWelcome();
+    }
+  }
+}
+
+function showWelcome() {
+  var welcomeMessage = '您好！我是意念科技的智能客服助手 🤖\n\n我可以帮您：\n• 📌 查找工具和资源\n• 💰 了解订阅价格和权益\n• 🔑 API 使用和 Token 管理\n• 📞 人工客服转接\n\n请问有什么可以帮助您的？';
+  addChatMessage('bot', welcomeMessage);
+}
+
+function sendChatMessage() {
+  var input = document.getElementById('chatbotInput');
+  var message = input.value.trim();
+  
+  if (!message) return;
+  
+  // 添加用户消息
+  addChatMessage('user', message);
+  input.value = '';
+  
+  // 保存到历史记录
+  chatHistory.push({ role: 'user', content: message, time: Date.now() });
+  
+  // 保存会话上下文（最近 5 条消息）
+  conversationContext.push({ role: 'user', content: message });
+  if (conversationContext.length > 10) {
+    conversationContext = conversationContext.slice(-10);
+  }
+  
+  // 显示正在输入
+  showTyping();
+  
+  // 分析消息意图
+  var intent = detectIntent(message);
+  
+  // 根据意图处理
+  setTimeout(function() {
+    hideTyping();
+    
+    if (intent.type === 'human_agent') {
+      // 转人工
+      showHumanAgentOption(message);
+    } else if (intent.type === 'tool_search') {
+      // 工具搜索
+      handleToolSearch(intent.query);
+    } else if (intent.type === 'pricing') {
+      // 价格咨询
+      handlePricingQuery(intent.plan);
+    } else if (intent.type === 'api') {
+      // API 咨询
+      handleApiQuery(intent.topic);
+    } else {
+      // 通用回复
+      var reply = generateReply(message, intent);
+      addChatMessage('bot', reply);
+      conversationContext.push({ role: 'assistant', content: reply });
+    }
+    
+    // 保存到历史记录
+    chatHistory.push({ role: 'assistant', content: reply || '', time: Date.now() });
+    
+    // 持久化到 localStorage
+    saveChatHistory();
+  }, 800 + Math.random() * 600);
+}
+
+// 意图识别
+function detectIntent(message) {
+  message = message.toLowerCase();
+  
+  // 关键词规则库
+  var rules = [
+    // 人工客服
+    { keywords: ['人工', '客服', '转接', '客服人员', '真人'], type: 'human_agent' },
+    // 工具搜索
+    { keywords: ['查找', '搜索', '找', '有没有', '什么工具', '哪里可以'], type: 'tool_search', query: message },
+    // 价格咨询
+    { keywords: ['价格', '费用', '收费', '多少钱', '订阅', '会员', '套餐', '免费'], type: 'pricing', plan: message },
+    // API 相关
+    { keywords: ['api', 'token', '接口', '调用', '密钥', '认证'], type: 'api', topic: message },
+    // 注册登录
+    { keywords: ['注册', '账号', '登录', '密码', '找回'], type: 'auth' },
+    // 问候
+    { keywords: ['你好', '嗨', 'hello', 'hi', '您好', '在吗'], type: 'greeting' },
+    // 感谢
+    { keywords: ['谢谢', '感谢', 'thanks', 'thank you'], type: 'thanks' },
+    // 告别
+    { keywords: ['再见', '拜拜', 'bye', 'byebye'], type: 'goodbye' },
+  ];
+  
+  for (var i = 0; i < rules.length; i++) {
+    for (var j = 0; j < rules[i].keywords.length; j++) {
+      if (message.indexOf(rules[i].keywords[j]) !== -1) {
+        return rules[i];
+      }
+    }
+  }
+  
+  return { type: 'unknown' };
+}
+
+// 生成回复
+function generateReply(message, intent) {
+  var templates = {
+    greeting: [
+      '您好！很高兴为您服务！请问有什么可以帮助您的？😊',
+      '嗨！我是您的智能助手，随时为您解答问题！',
+      '您好！我在这里，请告诉我您需要什么帮助～',
+    ],
+    auth: [
+      '注册：点击右上角"登录"按钮，选择"注册"，填写邮箱和密码即可。\n\n登录：使用注册的邮箱和密码登录。如果忘记密码，可以点击"忘记密码"找回。',
+      '账号相关操作都在右上角哦～\n• 新用户点击"登录"→"注册"\n• 老用户直接输入账号密码登录即可',
+    ],
+    thanks: [
+      '不客气！能帮到您是我的荣幸～ 😊',
+      '随时为您服务！还有其他问题随时问我～',
+      '您太客气了！有任何问题都欢迎随时咨询～',
+    ],
+    goodbye: [
+      '再见！祝您使用愉快，有需要随时回来找我～ 👋',
+      '拜拜！期待下次为您服务！👋',
+      '再见～有问题随时联系我哦！👋',
+    ],
+    unknown: [
+      '抱歉，我不太理解您的问题。您可以：\n• 换个方式描述\n• 在首页搜索工具\n• 输入"人工客服"转接到专业人员',
+      '这个问题有点复杂，建议您：\n• 查看我们的工具分类\n• 输入"人工客服"获取专业帮助\n• 或者告诉我更多细节，我再试试',
+      '我还在学习中，可能无法准确回答。您可以点击右下角的快捷问题，或者联系人工客服哦～',
+    ],
+  };
+  
+  var replies = templates[intent.type] || templates.unknown;
+  return replies[Math.floor(Math.random() * replies.length)];
+}
+
+// 处理工具搜索
+function handleToolSearch(query) {
+  var searchResults = [];
+  
+  // 在 toolData 中搜索
+  Object.keys(toolData).forEach(function(category) {
+    toolData[category].forEach(function(tool) {
+      if (tool.name.toLowerCase().indexOf(query.toLowerCase()) !== -1 ||
+          tool.desc.toLowerCase().indexOf(query.toLowerCase()) !== -1) {
+        searchResults.push(tool);
+      }
+    });
+  });
+  
+  if (searchResults.length === 0) {
+    var reply = '抱歉，没有找到相关工具 🤔\n\n您可以：\n• 换个关键词搜索\n• 查看首页的工具分类\n• 输入"人工客服"获取帮助';
+    addChatMessage('bot', reply);
+  } else if (searchResults.length <= 3) {
+    var reply = '为您找到以下工具：\n\n';
+    searchResults.forEach(function(tool) {
+      reply += '• ' + tool.name + '\n  ' + tool.desc + '\n\n';
+    });
+    reply += '点击首页的对应工具链接即可访问～';
+    addChatMessage('bot', reply);
+  } else {
+    var reply = '找到 ' + searchResults.length + ' 个相关工具！\n\n推荐几个热门的：\n';
+    searchResults.slice(0, 3).forEach(function(tool) {
+      reply += '• ' + tool.name + ' - ' + tool.desc + '\n';
+    });
+    reply += '\n更多工具请查看首页的工具分类～';
+    addChatMessage('bot', reply);
+  }
+}
+
+// 处理价格咨询
+function handlePricingQuery(plan) {
+  var reply = '📊 我们的订阅计划：\n\n';
+  
+  reply += '【Free】永久免费\n';
+  reply += '• 每日 100 Tokens\n';
+  reply += '• 基础工具访问\n';
+  reply += '• 适合个人学习\n\n';
+  
+  reply += '【Starter】¥99/月\n';
+  reply += '• 每日 1,000 Tokens\n';
+  reply += '• 全部工具访问\n';
+  reply += '• 优先邮件支持\n\n';
+  
+  reply += '【Pro】¥399/月 ⭐ 推荐\n';
+  reply += '• 每日 10,000 Tokens\n';
+  reply += '• 全部工具 + 高级功能\n';
+  reply += '• 24/7 优先支持\n\n';
+  
+  reply += '【Enterprise】¥999/月\n';
+  reply += '• 无限 Tokens\n';
+  reply += '• 全部功能 + 定制开发\n';
+  reply += '• 专属客户经理\n\n';
+  
+  reply += '点击右上角"订阅"按钮即可升级～';
+  addChatMessage('bot', reply);
+}
+
+// 处理 API 咨询
+function handleApiQuery(topic) {
+  var reply = '🔑 关于 API 和 Token：\n\n';
+  reply += '【如何获取 Token】\n';
+  reply += '1. 先登录您的账户\n';
+  reply += '2. 点击右上角"API"按钮\n';
+  reply += '3. 点击"创建新 Token"\n';
+  reply += '4. 复制生成的 Token 即可使用\n\n';
+  
+  reply += '【Token 额度】\n';
+  reply += '不同订阅计划有不同的每日 Token 额度：\n';
+  reply += '• Free: 100/天\n';
+  reply += '• Starter: 1,000/天\n';
+  reply += '• Pro: 10,000/天\n';
+  reply += '• Enterprise: 无限\n\n';
+  
+  reply += '【注意事项】\n';
+  reply += '• Token 请妥善保管，不要泄露\n';
+  reply += '• 每日 0 点重置额度\n';
+  reply += '• 可以创建最多 5 个 Token\n\n';
+  
+  reply += '还有其他问题吗？随时问我～';
+  addChatMessage('bot', reply);
+}
+
+// 显示人工客服选项
+function showHumanAgentOption(userMessage) {
+  var container = document.getElementById('chatbotMessages');
+  
+  var html = '<div class="chatbot-message bot">' +
+    '<div class="chatbot-msg-avatar">🤖</div>' +
+    '<div>' +
+    '<div class="chatbot-msg-bubble">' +
+    '正在为您转接人工客服... ⏳\n\n' +
+    '您可以选择以下方式联系：\n' +
+    '• 关注公众号【意念科技】获取更多干货\n' +
+    '• 加创始人微信进用户交流群\n' +
+    '• 发送邮件到 zzx@yndxw.com\n\n' +
+    '如果需要我继续解答，请继续提问～' +
+    '</div>' +
+    '<div class="chatbot-msg-time">刚刚</div>' +
+    '</div>' +
+    '</div>';
+  
+  container.insertAdjacentHTML('beforeend', html);
+  container.scrollTop = container.scrollHeight;
+}
+
+// 添加消息
+function addChatMessage(role, message) {
+  var container = document.getElementById('chatbotMessages');
+  var time = new Date().toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
+  
+  // 支持换行显示
+  var formattedMessage = formatMessage(message);
+  
+  var html = '<div class="chatbot-message ' + role + '">' +
+    '<div class="chatbot-msg-avatar">' + (role === 'bot' ? '🤖' : '👤') + '</div>' +
+    '<div>' +
+    '<div class="chatbot-msg-bubble">' + formattedMessage + '</div>' +
+    '<div class="chatbot-msg-time">' + time + '</div>' +
+    '</div>' +
+    '</div>';
+  
+  container.insertAdjacentHTML('beforeend', html);
+  container.scrollTop = container.scrollHeight;
+}
+
+// 格式化消息（支持换行、加粗等）
+function formatMessage(message) {
+  return escapeHtml(message)
+    .replace(/\n/g, '<br>')
+    .replace(/\*([^*]+)\*/g, '<strong>$1</strong>');
+}
+
+// 显示正在输入
+function showTyping() {
+  var container = document.getElementById('chatbotMessages');
+  var html = '<div class="chatbot-message bot" id="chatbotTyping">' +
+    '<div class="chatbot-msg-avatar">🤖</div>' +
+    '<div class="chatbot-msg-bubble chatbot-typing">' +
+    '<div class="chatbot-typing-dot"></div>' +
+    '<div class="chatbot-typing-dot"></div>' +
+    '<div class="chatbot-typing-dot"></div>' +
+    '</div>' +
+    '</div>';
+  container.insertAdjacentHTML('beforeend', html);
+  container.scrollTop = container.scrollHeight;
+}
+
+// 隐藏正在输入
+function hideTyping() {
+  var typing = document.getElementById('chatbotTyping');
+  if (typing) typing.remove();
+}
+
+// HTML 转义
+function escapeHtml(text) {
+  var div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+// 保存聊天历史
+function saveChatHistory() {
+  try {
+    localStorage.setItem('yinian_chat_history', JSON.stringify(chatHistory));
+  } catch (e) {
+    console.warn('无法保存聊天历史', e);
+  }
+}
+
+// 加载聊天历史
+function loadChatHistory() {
+  try {
+    var stored = localStorage.getItem('yinian_chat_history');
+    if (stored) {
+      chatHistory = JSON.parse(stored);
+      // 可以选择是否恢复历史消息
+      // restoreChatHistory();
+    }
+  } catch (e) {
+    console.warn('无法加载聊天历史', e);
+  }
+}
+
+// 清除聊天历史
+function clearChatHistory() {
+  chatHistory = [];
+  conversationContext = [];
+  localStorage.removeItem('yinian_chat_history');
+  
+  var container = document.getElementById('chatbotMessages');
+  container.innerHTML = '';
+  showWelcome();
+}
+
+// 页面加载时初始化
+loadChatHistory();
 </script>
 </body>
 </html>
